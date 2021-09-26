@@ -9,7 +9,6 @@ import android.widget.TextView
 
 class ClicksFragment : Fragment() {
 
-
     private lateinit var textClicks: TextView
     private var counterClicks = 0
 

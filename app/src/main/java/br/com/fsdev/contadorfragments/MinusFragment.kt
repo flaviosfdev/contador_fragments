@@ -12,11 +12,9 @@ import java.lang.RuntimeException
 
 class MinusFragment : Fragment(), View.OnClickListener {
 
-
     interface IMinusFragment {
         fun subtraction(number: Int)
     }
-
 
     private lateinit var buttonMinus: Button
     private lateinit var callback: IMinusFragment

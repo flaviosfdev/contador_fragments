@@ -12,11 +12,9 @@ import java.lang.RuntimeException
 
 class ResetFragment : Fragment(), View.OnClickListener {
 
-
     interface IResetFragment {
         fun reset(number: Int)
     }
-
 
     private lateinit var buttonReset: Button
     private lateinit var callback: IResetFragment

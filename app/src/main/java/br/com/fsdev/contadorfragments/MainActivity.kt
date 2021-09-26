@@ -3,10 +3,11 @@ package br.com.fsdev.contadorfragments
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.FrameLayout
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 
 class MainActivity : AppCompatActivity(), PlusFragment.IPlusFragment, MinusFragment.IMinusFragment,
-    ResetFragment.IResetFragment {
+    ResetFragment.IResetFragment, CounterFragment.ICounterFragment {
 
     private lateinit var plusContainer: FrameLayout
     private lateinit var minusContainer: FrameLayout
@@ -55,23 +56,40 @@ class MainActivity : AppCompatActivity(), PlusFragment.IPlusFragment, MinusFragm
 
 
     override fun sum(number: Int) {
+        setVisibilityContainers(true)
         setCounterAndSetClick(number)
     }
 
 
     override fun subtraction(number: Int) {
+        setVisibilityContainers(true)
         setCounterAndSetClick(number)
     }
 
 
     override fun reset(number: Int) {
+        setVisibilityContainers(false)
         setCounterAndSetClick(number)
+    }
+
+
+    override fun setVisibilityResetContainer(bool: Boolean) {
+        resetContainer.isVisible = bool
+            .also { counterContainer.isVisible = bool }
+
     }
 
 
     private fun setCounterAndSetClick(number: Int) {
         counterFragment.setCounter(number)
         clicksFragment.setCounterClicks(number)
+    }
+
+
+    private fun setVisibilityContainers(bool: Boolean) {
+        resetContainer.isVisible = bool
+        clickContainer.isVisible = bool
+        counterContainer.isVisible = bool
     }
 
 }

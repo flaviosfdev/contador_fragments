@@ -11,11 +11,9 @@ import java.lang.RuntimeException
 
 class PlusFragment : Fragment(), View.OnClickListener {
 
-
     interface IPlusFragment {
         fun sum(number: Int)
     }
-
 
     private lateinit var buttonPlus: Button
     private lateinit var callback: IPlusFragment
@@ -64,6 +62,7 @@ class PlusFragment : Fragment(), View.OnClickListener {
     private fun setListeners() {
         buttonPlus.setOnClickListener(this)
     }
+
 
     override fun onClick(view: View) {
 
