@@ -81,7 +81,7 @@
     <!-- END GUIDELINES -->
 
     <FrameLayout
-        android:id="@+id/container_plus"
+        android:id="@+id/container_mais"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintTop_toTopOf="@id/guideline2.5"
@@ -91,7 +91,7 @@
         tools:background="@color/orange" />
 
     <FrameLayout
-        android:id="@+id/container_minus"
+        android:id="@+id/container_menos"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/guideline22"
@@ -101,39 +101,33 @@
         tools:background="@color/red" />
 
     <FrameLayout
-        android:id="@+id/container_reset"
+        android:id="@+id/container_zerar"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:visibility="invisible"
         app:layout_constraintTop_toBottomOf="@id/guideline41.5"
         app:layout_constraintBottom_toTopOf="@id/guideline58.5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:background="@color/teal_700"
-        tools:visibility="visible" />
+        tools:background="@color/teal_700" />
 
     <FrameLayout
-        android:id="@+id/container_click"
+        android:id="@+id/container_cliques"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:visibility="invisible"
         app:layout_constraintTop_toBottomOf="@id/guideline61"
         app:layout_constraintBottom_toTopOf="@id/guideline78"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:background="@color/purple_500"
-        tools:visibility="visible" />
+        tools:background="@color/purple_500" />
 
     <FrameLayout
-        android:id="@+id/container_count"
+        android:id="@+id/container_contador"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:visibility="invisible"
         app:layout_constraintTop_toBottomOf="@id/guideline80.5"
         app:layout_constraintBottom_toTopOf="@id/guideline97.5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:background="@color/purple_700"
-        tools:visibility="visible" />
+        tools:background="@color/purple_700" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

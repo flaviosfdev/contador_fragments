@@ -7,10 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 
-class ClicksFragment : Fragment() {
+class CliquesFragment : Fragment() {
 
-    private lateinit var textClicks: TextView
-    private var counterClicks = 0
+    private lateinit var textCliques: TextView
+    private var contadorDeCliques = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +23,7 @@ class ClicksFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        val view: View? = inflater.inflate(R.layout.fragment_clicks, container, false)
+        val view: View? = inflater.inflate(R.layout.fragment_cliques, container, false)
 
         when (view) {
             null -> {
@@ -39,16 +39,16 @@ class ClicksFragment : Fragment() {
 
 
     private fun initViews(v: View) {
-        textClicks = v.findViewById(R.id.text_clicks)
+        textCliques = v.findViewById(R.id.text_cliques)
     }
 
 
-    fun setCounterClicks(number: Int) {
+    fun setContadorDeCliques(numero: Int) {
 
-        when (number) {
-            0 -> { counterClicks = 0 }
-            else -> { counterClicks++ }
-        }.also { textClicks.text = "Clicks: $counterClicks" }
+        when (numero) {
+            0 -> { contadorDeCliques = 0 }
+            else -> { contadorDeCliques++ }
+        }.also { textCliques.text = "Cliques: $contadorDeCliques" }
 
     }
 

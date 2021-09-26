@@ -9,21 +9,21 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import java.lang.RuntimeException
 
-class CounterFragment : Fragment() {
+class ContadorFragment : Fragment() {
 
-    interface ICounterFragment {
-        fun setVisibilityResetContainer(bool: Boolean)
+    interface IContadorFragment {
+        fun setVisibilidadeContainerZerar(bool: Boolean)
     }
 
-    private lateinit var textCounter: TextView
-    private var counter = 0
-    private lateinit var callback: ICounterFragment
+    private lateinit var textContador: TextView
+    private var contador = 0
+    private lateinit var callback: IContadorFragment
 
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         when (context) {
-            !is ICounterFragment -> throw RuntimeException("$context >>> interface não implementada.")
+            !is IContadorFragment -> throw RuntimeException("$context >>> interface não implementada.")
             else -> callback = context
         }
     }
@@ -39,7 +39,7 @@ class CounterFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        val view: View? = inflater.inflate(R.layout.fragment_counter, container, false)
+        val view: View? = inflater.inflate(R.layout.fragment_contador, container, false)
 
         when (view) {
             null -> {
@@ -55,28 +55,28 @@ class CounterFragment : Fragment() {
 
 
     private fun initViews(v: View) {
-        textCounter = v.findViewById(R.id.text_count)
+        textContador = v.findViewById(R.id.text_contador)
     }
 
 
-    fun setCounter(number: Int) {
+    fun setContador(numero: Int) {
 
-        when (number) {
-            1 -> counter++
-            -1 -> counter--
-            else -> counter = 0
+        when (numero) {
+            1 -> contador++
+            -1 -> contador--
+            else -> contador = 0
         }.also {
-            checkReset(counter)
-            textCounter.text = "Counter: $counter"
+            setVisibilidadeContainerZerar(contador)
+            textContador.text = "Contador: $contador"
         }
 
     }
 
 
-    private fun checkReset(c: Int) {
+    private fun setVisibilidadeContainerZerar(contador: Int) {
 
-        if (c == 0) {
-            callback.setVisibilityResetContainer(false)
+        if (contador == 0) {
+            callback.setVisibilidadeContainerZerar(false)
         }
 
     }

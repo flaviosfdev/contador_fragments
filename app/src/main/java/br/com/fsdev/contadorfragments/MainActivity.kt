@@ -6,45 +6,53 @@ import android.widget.FrameLayout
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 
-class MainActivity : AppCompatActivity(), PlusFragment.IPlusFragment, MinusFragment.IMinusFragment,
-    ResetFragment.IResetFragment, CounterFragment.ICounterFragment {
+class MainActivity : AppCompatActivity(), MaisFragment.IMaisFragment, MenosFragment.IMenosFragment,
+    ZerarFragment.IZerarFragment, ContadorFragment.IContadorFragment {
 
-    private lateinit var plusContainer: FrameLayout
-    private lateinit var minusContainer: FrameLayout
-    private lateinit var resetContainer: FrameLayout
-    private lateinit var clickContainer: FrameLayout
-    private lateinit var counterContainer: FrameLayout
+    private lateinit var containerMais: FrameLayout
+    private lateinit var containerMenos: FrameLayout
+    private lateinit var containerZerar: FrameLayout
+    private lateinit var containerCliques: FrameLayout
+    private lateinit var containerContador: FrameLayout
 
-    private var plusFragment = PlusFragment()
-    private var minusFragment = MinusFragment()
-    private var resetFragment = ResetFragment()
-    private var clicksFragment = ClicksFragment()
-    private var counterFragment = CounterFragment()
+    private var maisFragment = MaisFragment()
+    private var menosFragment = MenosFragment()
+    private var zerarFragment = ZerarFragment()
+    private var cliquesFragment = CliquesFragment()
+    private var contadorFragment = ContadorFragment()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initViews()
         inflateFragments()
+        setVisibilidadeContainers(false)
     }
 
 
     private fun initViews() {
         setContentView(R.layout.activity_main)
-        plusContainer = findViewById(R.id.container_plus)
-        minusContainer = findViewById(R.id.container_minus)
-        resetContainer = findViewById(R.id.container_reset)
-        clickContainer = findViewById(R.id.container_click)
-        counterContainer = findViewById(R.id.container_count)
+        containerMais = findViewById(R.id.container_mais)
+        containerMenos = findViewById(R.id.container_menos)
+        containerZerar = findViewById(R.id.container_zerar)
+        containerCliques = findViewById(R.id.container_cliques)
+        containerContador = findViewById(R.id.container_contador)
     }
 
 
     private fun inflateFragments() {
-        setFragment(plusContainer, plusFragment)
-        setFragment(minusContainer, minusFragment)
-        setFragment(resetContainer, resetFragment)
-        setFragment(clickContainer, clicksFragment)
-        setFragment(counterContainer, counterFragment)
+        setFragment(containerMais, maisFragment)
+        setFragment(containerMenos, menosFragment)
+        setFragment(containerZerar, zerarFragment)
+        setFragment(containerCliques, cliquesFragment)
+        setFragment(containerContador, contadorFragment)
+    }
+
+
+    private fun setVisibilidadeContainers(bool: Boolean) {
+        containerZerar.isVisible = bool
+        containerCliques.isVisible = bool
+        containerContador.isVisible = bool
     }
 
 
@@ -55,41 +63,34 @@ class MainActivity : AppCompatActivity(), PlusFragment.IPlusFragment, MinusFragm
     }
 
 
-    override fun sum(number: Int) {
-        setVisibilityContainers(true)
-        setCounterAndSetClick(number)
+    private fun setContadorerECliques(numero: Int) {
+        contadorFragment.setContador(numero)
+        cliquesFragment.setContadorDeCliques(numero)
     }
 
 
-    override fun subtraction(number: Int) {
-        setVisibilityContainers(true)
-        setCounterAndSetClick(number)
+    override fun somar(numero: Int) {
+        setVisibilidadeContainers(true)
+        setContadorerECliques(numero)
     }
 
 
-    override fun reset(number: Int) {
-        setVisibilityContainers(false)
-        setCounterAndSetClick(number)
+    override fun subtrair(numero: Int) {
+        setVisibilidadeContainers(true)
+        setContadorerECliques(numero)
     }
 
 
-    override fun setVisibilityResetContainer(bool: Boolean) {
-        resetContainer.isVisible = bool
-            .also { counterContainer.isVisible = bool }
-
+    override fun zerar(numero: Int) {
+        setVisibilidadeContainers(false)
+        setContadorerECliques(numero)
     }
 
 
-    private fun setCounterAndSetClick(number: Int) {
-        counterFragment.setCounter(number)
-        clicksFragment.setCounterClicks(number)
-    }
+    override fun setVisibilidadeContainerZerar(bool: Boolean) {
+        containerZerar.isVisible = bool
+            .also { containerContador.isVisible = bool }
 
-
-    private fun setVisibilityContainers(bool: Boolean) {
-        resetContainer.isVisible = bool
-        clickContainer.isVisible = bool
-        counterContainer.isVisible = bool
     }
 
 }

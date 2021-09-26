@@ -10,20 +10,20 @@ import android.widget.Button
 import java.lang.NullPointerException
 import java.lang.RuntimeException
 
-class MinusFragment : Fragment(), View.OnClickListener {
+class MenosFragment : Fragment(), View.OnClickListener {
 
-    interface IMinusFragment {
-        fun subtraction(number: Int)
+    interface IMenosFragment {
+        fun subtrair(numero: Int)
     }
 
-    private lateinit var buttonMinus: Button
-    private lateinit var callback: IMinusFragment
+    private lateinit var buttonMenos: Button
+    private lateinit var callback: IMenosFragment
 
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         when (context) {
-            !is IMinusFragment -> throw RuntimeException("$context >>> Interface não implementada.")
+            !is IMenosFragment -> throw RuntimeException("$context >>> Interface não implementada.")
             else -> callback = context
         }
     }
@@ -39,7 +39,7 @@ class MinusFragment : Fragment(), View.OnClickListener {
         savedInstanceState: Bundle?
     ): View {
 
-        val view: View? = inflater.inflate(R.layout.fragment_minus, container, false)
+        val view: View? = inflater.inflate(R.layout.fragment_menos, container, false)
 
         when (view) {
             null -> {
@@ -56,19 +56,19 @@ class MinusFragment : Fragment(), View.OnClickListener {
 
 
     private fun initViews(v: View) {
-        buttonMinus = v.findViewById(R.id.button_minus)
+        buttonMenos = v.findViewById(R.id.button_menos)
     }
 
 
     private fun setListeners() {
-        buttonMinus.setOnClickListener(this)
+        buttonMenos.setOnClickListener(this)
     }
 
 
     override fun onClick(view: View) {
 
         when (view) {
-            buttonMinus -> { callback.subtraction(-1) }
+            buttonMenos -> { callback.subtrair(-1) }
         }
 
     }

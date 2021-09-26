@@ -4,16 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_700"
-    tools:context=".CounterFragment">
+    android:background="@color/orange"
+    tools:context=".MaisFragment">
 
-    <TextView
-        android:id="@+id/text_count"
+    <Button
+        android:id="@+id/button_mais"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Counter:"
-        android:textColor="@color/white"
-        android:textSize="32sp"
+        android:text="mais"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

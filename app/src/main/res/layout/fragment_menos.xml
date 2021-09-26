@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/orange"
-    tools:context=".PlusFragment">
+    android:background="@color/red"
+    tools:context=".MenosFragment">
 
     <Button
-        android:id="@+id/button_plus"
+        android:id="@+id/button_menos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Plus"
+        android:text="menos"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

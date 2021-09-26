@@ -10,21 +10,21 @@ import android.widget.Button
 import java.lang.NullPointerException
 import java.lang.RuntimeException
 
-class ResetFragment : Fragment(), View.OnClickListener {
+class ZerarFragment : Fragment(), View.OnClickListener {
 
-    interface IResetFragment {
-        fun reset(number: Int)
+    interface IZerarFragment {
+        fun zerar(numero: Int)
     }
 
-    private lateinit var buttonReset: Button
-    private lateinit var callback: IResetFragment
+    private lateinit var buttonZerar: Button
+    private lateinit var callback: IZerarFragment
 
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
         when (context) {
-            !is IResetFragment -> throw RuntimeException("$context >>> Interface não implementada.")
+            !is IZerarFragment -> throw RuntimeException("$context >>> Interface não implementada.")
             else -> callback = context
         }
 
@@ -41,7 +41,7 @@ class ResetFragment : Fragment(), View.OnClickListener {
         savedInstanceState: Bundle?
     ): View {
 
-        val view: View? = inflater.inflate(R.layout.fragment_reset, container, false)
+        val view: View? = inflater.inflate(R.layout.fragment_zerar, container, false)
 
         when (view) {
             null -> {
@@ -58,19 +58,19 @@ class ResetFragment : Fragment(), View.OnClickListener {
 
 
     private fun initViews(v: View) {
-        buttonReset = v.findViewById(R.id.button_reset)
+        buttonZerar = v.findViewById(R.id.button_zerar)
     }
 
 
     private fun setListeners() {
-        buttonReset.setOnClickListener(this)
+        buttonZerar.setOnClickListener(this)
     }
 
 
     override fun onClick(view: View) {
 
         when (view) {
-            buttonReset -> { callback.reset(0) }
+            buttonZerar -> { callback.zerar(0) }
         }
 
     }

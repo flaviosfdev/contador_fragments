@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/red"
-    tools:context=".MinusFragment">
+    android:background="@color/teal_700"
+    tools:context=".ZerarFragment">
 
     <Button
-        android:id="@+id/button_minus"
+        android:id="@+id/button_zerar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="minus"
+        android:text="zerar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
