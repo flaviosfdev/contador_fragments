@@ -46,12 +46,11 @@ class ClicksFragment : Fragment() {
 
     fun setCounterClicks(number: Int) {
 
-        counterClicks = when (number) {
-            0 -> { 0 }
+        when (number) {
+            0 -> { counterClicks = 0 }
             else -> { counterClicks++ }
-        }
+        }.also { textClicks.text = "Clicks: $counterClicks" }
 
-        textClicks.text = "Clicks: $counterClicks"
     }
 
 }

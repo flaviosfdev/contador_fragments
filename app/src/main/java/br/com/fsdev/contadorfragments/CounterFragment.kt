@@ -46,13 +46,12 @@ class CounterFragment : Fragment() {
 
     fun setCounter(number: Int) {
 
-        counter = when (number) {
-            1 -> { counter++ }
-            -1 -> { counter-- }
-            else -> { 0 }
-        }
+        when (number) {
+            1 -> counter++
+            -1 -> counter--
+            else -> counter = 0
+        }.also { textCounter.text = "Counter: $counter" }
 
-        textCounter.text = "Counter: $counter"
     }
 
 }
