@@ -2,6 +2,7 @@ package br.com.fsdev.contadorfragments
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.FrameLayout
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -21,12 +22,28 @@ class MainActivity : AppCompatActivity(), MaisFragment.IMaisFragment, MenosFragm
     private var cliquesFragment = CliquesFragment()
     private var contadorFragment = ContadorFragment()
 
+    private var reset = 0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.i("reset", "entrei no onCreate. Reset: $reset")
         initViews()
         inflateFragments()
-        setVisibilidadeContainers(false)
+    }
+
+
+    override fun onStart() {
+        super.onStart()
+        Log.i("reset", "entrei no onStart. Reset: $reset")
+        when (reset) {
+            0 -> {
+                setVisibilidadeContainers(false)
+                reset++
+                Log.i("reset", "reset incrementado. Reset: $reset")
+            }
+        }
+        Log.i("reset", "saí do onStart. Reset: $reset")
     }
 
 
@@ -93,4 +110,24 @@ class MainActivity : AppCompatActivity(), MaisFragment.IMaisFragment, MenosFragm
 
     }
 
+
+    override fun onPause() {
+        super.onPause()
+        Log.i("reset", "entrei no onPause. Reset: $reset")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.i("reset", "entrei no onStop. Reset: $reset")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.i("reset", "voltando do onStop. entrei no onRestart. Reset: $reset")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.i("reset", "estou no onResume, posso interagir. Reset: $reset")
+    }
 }
