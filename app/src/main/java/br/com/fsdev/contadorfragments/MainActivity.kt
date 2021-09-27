@@ -16,11 +16,11 @@ class MainActivity : AppCompatActivity(), MaisFragment.IMaisFragment, MenosFragm
     private lateinit var containerCliques: FrameLayout
     private lateinit var containerContador: FrameLayout
 
-    private var maisFragment = MaisFragment()
-    private var menosFragment = MenosFragment()
-    private var zerarFragment = ZerarFragment()
-    private var cliquesFragment = CliquesFragment()
-    private var contadorFragment = ContadorFragment()
+    private lateinit var maisFragment: MaisFragment
+    private lateinit var menosFragment: MenosFragment
+    private lateinit var zerarFragment: ZerarFragment
+    private lateinit var cliquesFragment: CliquesFragment
+    private lateinit var contadorFragment: ContadorFragment
 
     private var reset = 0
 
@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity(), MaisFragment.IMaisFragment, MenosFragm
         super.onCreate(savedInstanceState)
         Log.i("reset", "entrei no onCreate. Reset: $reset")
         initViews()
+        initFragments()
         inflateFragments()
     }
 
@@ -54,6 +55,15 @@ class MainActivity : AppCompatActivity(), MaisFragment.IMaisFragment, MenosFragm
         containerZerar = findViewById(R.id.container_zerar)
         containerCliques = findViewById(R.id.container_cliques)
         containerContador = findViewById(R.id.container_contador)
+    }
+
+
+    private fun initFragments() {
+        maisFragment = MaisFragment()
+        menosFragment = MenosFragment()
+        zerarFragment = ZerarFragment()
+        cliquesFragment = CliquesFragment()
+        contadorFragment = ContadorFragment()
     }
 
 
